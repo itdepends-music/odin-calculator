@@ -3,15 +3,19 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .calculator {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
     flex-direction: column;
+    border: 2px solid #20c20e;
+    border-radius: 10px;
+    padding: 30px;
 }
 
 .button-row {
@@ -82,7 +86,7 @@ button.operator:active {
     border-radius: 10px;
     width: 410px;
     height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     color: #20c20e;
     display: flex;
     justify-content: right;
