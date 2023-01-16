@@ -38,15 +38,23 @@ body {
     cursor: pointer;
 }
 
+.buttons button:hover {
+    background-color: #083004;
+}
+
 .buttons button:active {
     background-color: #20c20e;
     color: black;
-} 
+}
 
 #equals {
     width: 210px;
     border-color: blue;
     color: blue;
+}
+
+button#equals:hover {
+    background-color: #004;
 }
 
 button#equals:active {
@@ -57,6 +65,10 @@ button#equals:active {
 button.operator {
     border-color: white;
     color: white;
+}
+
+button.operator:hover {
+    background-color: #444;
 }
 
 button.operator:active {
