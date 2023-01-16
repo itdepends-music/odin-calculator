@@ -38,13 +38,28 @@ body {
     cursor: pointer;
 }
 
+.buttons button:active {
+    background-color: #20c20e;
+    color: black;
+} 
+
 #equals {
     width: 210px;
     border-color: blue;
     color: blue;
 }
 
+button#equals:active {
+    background-color: blue;
+    color: black;
+}
+
 button.operator {
     border-color: white;
     color: white;
+}
+
+button.operator:active {
+    background-color: white;
+    color: black;
 }
