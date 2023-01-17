@@ -41,6 +41,8 @@ buttons.forEach(button => {
             curNumber += button.textContent;
         } else if (button.id === 'equals') {
             operate();
+            curNumber = firstNumber;
+            firstNumber = '';
         } else {
             operate();
             operator = button.textContent;
