@@ -32,6 +32,9 @@ function operate() {
         result = a * b;        
     } else if (operator === '\u00F7') {
         result = a / b;
+        if (b === 0) {
+            result = ":'‑(";
+        }
     } else if (operator === '') {
         result = curNumber;
     }
@@ -43,6 +46,9 @@ function operate() {
 const buttons = document.querySelectorAll('.buttons button');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
+        if (curNumber === ":'‑(") {
+            curNumber = '';
+        }
         if (!button.classList.contains('operator')) {
             if (finalResult) {
                 curNumber = '';
