@@ -6,6 +6,11 @@ const display = document.querySelector('.display');
 
 function updateScreen() {
     display.textContent = `FN: ${firstNumber}, CN: ${curNumber}, OP: ${operator}`;
+    if (firstNumber === '') {
+        display.textContent = curNumber;
+    } else {
+        display.textContent = firstNumber + operator + curNumber;
+    }
 }
 
 function operate() {
