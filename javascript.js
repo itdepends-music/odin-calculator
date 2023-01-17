@@ -12,6 +12,12 @@ function operate() {
     const b = Number(curNumber);
     let result = null;
 
+    if (firstNumber === '') {
+        firstNumber = curNumber;
+        curNumber = '';
+        return;
+    }
+
     if (operator === '+') {
         result = a + b;
     } else if (operator === '\u2212') {
