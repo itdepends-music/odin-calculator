@@ -15,7 +15,7 @@ buttons.forEach(button => {
         } else if (button.id === 'equals') {
             // TODO
         } else {
-            // TODO
+            operator = button.textContent;
         }
         updateScreen();
     });
