@@ -42,6 +42,7 @@ buttons.forEach(button => {
         } else if (button.id === 'equals') {
             operate();
         } else {
+            operate();
             operator = button.textContent;
         }
         updateScreen();
