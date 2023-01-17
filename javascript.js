@@ -6,4 +6,12 @@ function updateScreen(text) {
     display.textContent = text;
 }
 
-updateScreen('12345');
+const buttons = document.querySelectorAll('.buttons button');
+console.log(buttons);
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        if (!button.classList.contains('operator')) {
+            updateScreen(displayText + button.textContent);
+        }
+    });
+});
