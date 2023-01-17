@@ -50,6 +50,9 @@ buttons.forEach(button => {
             curNumber = '';
         }
         if (!button.classList.contains('operator')) {
+            if (button.textContent === '.' && curNumber.includes('.')) {
+                return;
+            }
             if (finalResult) {
                 curNumber = '';
                 finalResult = false;
