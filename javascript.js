@@ -54,8 +54,11 @@ buttons.forEach(button => {
             curNumber = '';
             firstNumber = '';
             operator = '';
-        }
-        else if (!button.classList.contains('operator')) {
+        } else if (button.textContent === 'BS') {
+            if (curNumber !== '') {
+                curNumber = curNumber.slice(0, -1);
+            }
+        } else if (!button.classList.contains('operator')) {
             if (button.textContent === '.' && curNumber.includes('.')) {
                 return;
             }
