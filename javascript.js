@@ -10,15 +10,18 @@ function updateScreen() {
 function operate() {
     const a = Number(firstNumber);
     const b = Number(curNumber);
+    let result = null;
 
     if (operator === '+') {
-        const result = a + b;
+        result = a + b;
     } else if (operator === '\u2212') {
-        const result = a - b;
+        result = a - b;
     } else if (operator === '\u00D7') {
-        const result = a * b;        
+        result = a * b;        
     } else if (operator === '\u00F7') {
-        const result = a / b;
+        result = a / b;
+    } else if (operator === '') {
+        result = curNumber;
     }
 
     firstNumber = String(result);
