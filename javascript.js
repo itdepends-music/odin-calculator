@@ -1,6 +1,7 @@
 let firstNumber = '';
 let curNumber = '';
 let operator = '';
+let finalResult = false;
 const display = document.querySelector('.display');
 
 function updateScreen() {
@@ -38,14 +39,20 @@ const buttons = document.querySelectorAll('.buttons button');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         if (!button.classList.contains('operator')) {
+            if (finalResult) {
+                curNumber = '';
+                finalResult = false;
+            }
             curNumber += button.textContent;
         } else if (button.id === 'equals') {
             operate();
             curNumber = firstNumber;
             firstNumber = '';
+            finalResult = true;
         } else {
             operate();
             operator = button.textContent;
+            finalResult = false;
         }
         updateScreen();
     });
