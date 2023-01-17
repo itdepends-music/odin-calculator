@@ -8,7 +8,6 @@ function updateScreen() {
 }
 
 const buttons = document.querySelectorAll('.buttons button');
-console.log(buttons);
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         if (!button.classList.contains('operator')) {
@@ -18,5 +17,6 @@ buttons.forEach(button => {
         } else {
             // TODO
         }
+        updateScreen();
     });
 });
