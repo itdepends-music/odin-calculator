@@ -1,9 +1,10 @@
-let displayText = '';
+let firstNumber = '';
+let curNumber = '';
+let operator = '';
 const display = document.querySelector('.display');
 
-function updateScreen(text) {
-    displayText = text;
-    display.textContent = text;
+function updateScreen() {
+    display.textContent = `FN: ${firstNumber}, CN: ${curNumber}, OP: ${operator}`;
 }
 
 const buttons = document.querySelectorAll('.buttons button');
@@ -11,7 +12,11 @@ console.log(buttons);
 buttons.forEach(button => {
     button.addEventListener('click', () => {
         if (!button.classList.contains('operator')) {
-            updateScreen(displayText + button.textContent);
+            curNumber += button.textContent;
+        } else if (button.id === 'equals') {
+            // TODO
+        } else {
+            // TODO
         }
     });
 });
