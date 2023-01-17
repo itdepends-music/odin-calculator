@@ -49,7 +49,13 @@ buttons.forEach(button => {
         if (curNumber === ":'\u2011(") {
             curNumber = '';
         }
-        if (!button.classList.contains('operator')) {
+
+        if (button.textContent === 'CL') {
+            curNumber = '';
+            firstNumber = '';
+            operator = '';
+        }
+        else if (!button.classList.contains('operator')) {
             if (button.textContent === '.' && curNumber.includes('.')) {
                 return;
             }
