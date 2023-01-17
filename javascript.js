@@ -13,7 +13,7 @@ function operate() {
 
     if (operator === '+') {
         const result = a + b;
-    } else if (operator === '-') {
+    } else if (operator === '\u2212') {
         const result = a - b;
     } else if (operator === '\u00D7') {
         const result = a * b;        
