@@ -10,7 +10,6 @@ function updateScreen() {
     } else {
         display.textContent = firstNumber + operator + curNumber;
     }
-    console.log(`firstNumber: ${firstNumber}, curNumber: ${curNumber}, operator; ${operator}`);
 }
 
 function operate() {
