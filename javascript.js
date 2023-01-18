@@ -83,7 +83,7 @@ buttons.forEach(button => {
         } else {
             operate();
 
-            if (firstNumber === ":'\u2011()") {
+            if (firstNumber === ":'\u2011(") {
                 curNumber = firstNumber;
                 updateScreen();
                 return;
