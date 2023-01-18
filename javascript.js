@@ -5,10 +5,37 @@ let finalResult = false;
 const display = document.querySelector('.display');
 
 function updateScreen() {
+    console.log(`firstNumber: ${firstNumber}`)
+    let firstNumberDisplay = firstNumber;
+    if (firstNumber.length > 10) {
+        if (firstNumber.slice(0, 11).includes('.')) {
+            if (firstNumber.slice(9) !== '.') {
+                firstNumberDisplay = firstNumber.slice(0, 10);
+            } else {
+                firstNumberDisplay = firstNumber.slice(0, 9);
+            }
+        } else {
+            firstNumberDisplay = Number(firstNumber).toExponential(3);
+        }
+    }
+
+    let curNumberDisplay = curNumber;
+    if (curNumber.length > 10) {
+        if (curNumber.slice(0, 11).includes(".")) {
+            if (curNumber.slice(10) !== '.') {
+                curNumberDisplay = curNumber.slice(0, 10);
+            } else {
+                curNumberDisplay = curNumber.slice(0, 9);
+            }
+        } else {
+            curNumberDisplay = Number(curNumber).toExponential(3);
+        }
+    }
+
     if (firstNumber === '') {
-        display.textContent = curNumber;
+        display.textContent = curNumberDisplay;
     } else {
-        display.textContent = firstNumber + operator + curNumber;
+        display.textContent = firstNumberDisplay + operator + curNumber;
     }
 }
 
