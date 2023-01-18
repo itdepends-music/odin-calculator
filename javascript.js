@@ -67,6 +67,9 @@ buttons.forEach(button => {
             if (button.textContent === '.' && curNumber.includes('.')) {
                 return;
             }
+
+            if (curNumber.length >= 10) { return; }
+
             if (finalResult) {
                 curNumber = '';
                 finalResult = false;
