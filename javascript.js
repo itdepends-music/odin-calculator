@@ -54,7 +54,9 @@ buttons.forEach(button => {
             firstNumber = '';
             operator = '';
         } else if (button.textContent === 'BS') {
-            if (curNumber !== '') {
+            if (curNumber === ":'\u2011(") {
+                curNumber = '';
+            } else if (curNumber !== '') {
                 curNumber = curNumber.slice(0, -1);
             } else if (operator !== '') {
                 operator = '';
