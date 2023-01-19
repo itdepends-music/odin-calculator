@@ -4,38 +4,28 @@ let operator = '';
 let finalResult = false;
 const display = document.querySelector('.display');
 
+// Ensures that output is less than 10 digits.
+// Will use exponential notation if need be.
+function displayNumber(num) {
+    if (num.length > 10) {
+        if (num.slice(0,11).includes('.') && !(num.includes('e'))) {
+            if (num.slice(9) !== '.') {
+                num = num.slice(0, 10);
+            } else {
+                num = num.slice(0, 9);
+            }
+        } else {
+            num = Number(num).toExponential(4);
+        }
+    }
+    return num;
+}
+
 function updateScreen() {
-    console.log(`firstNumber: ${firstNumber}`)
-    let firstNumberDisplay = firstNumber;
-    if (firstNumber.length > 10) {
-        if (firstNumber.slice(0, 11).includes('.')) {
-            if (firstNumber.slice(9) !== '.') {
-                firstNumberDisplay = firstNumber.slice(0, 10);
-            } else {
-                firstNumberDisplay = firstNumber.slice(0, 9);
-            }
-        } else {
-            firstNumberDisplay = Number(firstNumber).toExponential(3);
-        }
-    }
-
-    let curNumberDisplay = curNumber;
-    if (curNumber.length > 10) {
-        if (curNumber.slice(0, 11).includes(".")) {
-            if (curNumber.slice(10) !== '.') {
-                curNumberDisplay = curNumber.slice(0, 10);
-            } else {
-                curNumberDisplay = curNumber.slice(0, 9);
-            }
-        } else {
-            curNumberDisplay = Number(curNumber).toExponential(3);
-        }
-    }
-
     if (firstNumber === '') {
-        display.textContent = curNumberDisplay;
+        display.textContent = displayNumber(curNumber);
     } else {
-        display.textContent = firstNumberDisplay + operator + curNumber;
+        display.textContent = displayNumber(firstNumber) + operator + displayNumber(curNumber);
     }
 }
 
