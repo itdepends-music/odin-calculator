@@ -98,6 +98,12 @@ function processEvent(button) {
             firstNumber = '';
             finalResult = true;
         } else {
+            if (curNumber === '') {
+                operator = button.textContent;
+                updateScreen();
+                return;
+            }
+
             operate();
 
             if (firstNumber === ":'\u2011(") {
@@ -114,4 +120,8 @@ function processEvent(button) {
 }
 
 buttons.forEach(processEvent);
-
+document.addEventListener("keypress", e => {
+    e.preventDefault();
+    let key = null;
+    e.keyCode
+});
