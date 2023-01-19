@@ -60,89 +60,103 @@ function operate() {
     curNumber = '';
 }
 
-function processEvent(button) {
-    button.addEventListener('click', () => {
+function processEvent(text) {
+    console.log(text);
+    if (curNumber === ":'\u2011(") {
+        curNumber = '';
+    }
+
+    if (text === 'CL') {
+        curNumber = '';
+        firstNumber = '';
+        operator = '';
+    } else if (text === 'BS') {
+        if (finalResult === true) {
+            curNumber = '';
+            updateScreen();
+            return;
+        }
+
         if (curNumber === ":'\u2011(") {
             curNumber = '';
+        } else if (curNumber !== '') {
+            curNumber = curNumber.slice(0, -1);
+        } else if (operator !== '') {
+            operator = '';
+        } else if (firstNumber !== '') {
+            firstNumber = firstNumber.slice(0, -1);
+        }
+    } else if (!isNaN(Number(text))) {
+        if (text === '.' && curNumber.includes('.')) {
+            return;
         }
 
-        if (button.textContent === 'CL') {
+        if (curNumber.length >= 10) { return; }
+
+        if (finalResult) {
             curNumber = '';
-            firstNumber = '';
-            operator = '';
-        } else if (button.textContent === 'BS') {
-            if (finalResult === true) {
-                curNumber = '';
-                updateScreen();
-                return;
-            }
-
-            if (curNumber === ":'\u2011(") {
-                curNumber = '';
-            } else if (curNumber !== '') {
-                curNumber = curNumber.slice(0, -1);
-            } else if (operator !== '') {
-                operator = '';
-            } else if (firstNumber !== '') {
-                firstNumber = firstNumber.slice(0, -1);
-            }
-        } else if (!button.classList.contains('operator')) {
-            if (button.textContent === '.' && curNumber.includes('.')) {
-                return;
-            }
-
-            if (curNumber.length >= 10) { return; }
-
-            if (finalResult) {
-                curNumber = '';
-                finalResult = false;
-            }
-            curNumber += button.textContent;
-        } else if (button.id === 'equals') {
-            operate();
-            curNumber = firstNumber;
-            firstNumber = '';
-            finalResult = true;
-        } else {
-            if (curNumber === '') {
-                operator = button.textContent;
-                updateScreen();
-                return;
-            }
-
-            operate();
-
-            if (firstNumber === ":'\u2011(") {
-                curNumber = firstNumber;
-                updateScreen();
-                return;
-            }
-
-            operator = button.textContent;
             finalResult = false;
         }
-        updateScreen();
-    });
+        curNumber += text;
+    } else if (text === '=') {
+        operate();
+        curNumber = firstNumber;
+        firstNumber = '';
+        finalResult = true;
+    } else {
+        if (curNumber === '') {
+            operator = text;
+            updateScreen();
+            return;
+        }
+
+        operate();
+
+        if (firstNumber === ":'\u2011(") {
+            curNumber = firstNumber;
+            updateScreen();
+            return;
+        }
+
+        operator = text;
+        finalResult = false;
+    }
+    updateScreen();
 }
 
-buttons.forEach(processEvent);
+buttons.forEach((button) => {
+    button.addEventListener('click', e => {processEvent(button.textContent);})});
+
 document.addEventListener("keydown", e => {
     e.preventDefault();
     switch (e.key) {
         case '.':
             processEvent('.');
+            break;
+        case 'Enter':
         case '=':
             processEvent('=');
+            break;
         case '-':
             processEvent('\u2212');
+            break;
         case '+':
             processEvent('+');
+            break;
         case '*':
-            processEvent('\u00f7');
+            processEvent('\u00d7');
+            break;
         case '/':
-            processEvent('\u2011');
+            processEvent('\u00f7');
+            break;
+        case 'Backspace':
+            processEvent('BS');
+            break;
+        case '\\':
+            processEvent('CL');
+            break;
         default:
-            if (Number(e.key) !== NaN && Number(e.key) >= 0 && Number(e.key) < 10) {
+            if (!isNaN(Number(e.key)) && Number(e.key) >= 0 && Number(e.key) < 10) {
                 processEvent(e.key);
             }
     }
