@@ -10,7 +10,7 @@ const buttons = document.querySelectorAll('.buttons button');
 function displayNumber(num) {
     if (num.length > 10) {
         if (num.slice(0,11).includes('.') && !(num.includes('e'))) {
-            if (num.slice(9) !== '.') {
+            if (num.slice(9, 10) !== '.') {
                 num = num.slice(0, 10);
             } else {
                 num = num.slice(0, 9);
@@ -86,7 +86,7 @@ function processEvent(text) {
         } else if (firstNumber !== '') {
             firstNumber = firstNumber.slice(0, -1);
         }
-    } else if (!isNaN(Number(text))) {
+    } else if (!isNaN(Number(text)) || text === '.') {
         if (text === '.' && curNumber.includes('.')) {
             return;
         }
