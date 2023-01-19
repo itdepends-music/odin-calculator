@@ -126,8 +126,24 @@ function processEvent(button) {
 }
 
 buttons.forEach(processEvent);
-document.addEventListener("keypress", e => {
+document.addEventListener("keydown", e => {
     e.preventDefault();
-    let key = null;
-    e.keyCode
+    switch (e.key) {
+        case '.':
+            processEvent('.');
+        case '=':
+            processEvent('=');
+        case '-':
+            processEvent('\u2212');
+        case '+':
+            processEvent('+');
+        case '*':
+            processEvent('\u00f7');
+        case '/':
+            processEvent('\u2011');
+        default:
+            if (Number(e.key) !== NaN && Number(e.key) >= 0 && Number(e.key) < 10) {
+                processEvent(e.key);
+            }
+    }
 });
