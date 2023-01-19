@@ -71,6 +71,12 @@ function processEvent(button) {
             firstNumber = '';
             operator = '';
         } else if (button.textContent === 'BS') {
+            if (finalResult === true) {
+                curNumber = '';
+                updateScreen();
+                return;
+            }
+
             if (curNumber === ":'\u2011(") {
                 curNumber = '';
             } else if (curNumber !== '') {
