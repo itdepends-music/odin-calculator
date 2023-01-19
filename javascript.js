@@ -3,6 +3,7 @@ let curNumber = '';
 let operator = '';
 let finalResult = false;
 const display = document.querySelector('.display');
+const buttons = document.querySelectorAll('.buttons button');
 
 // Ensures that output is less than 10 digits.
 // Will use exponential notation if need be.
@@ -59,8 +60,7 @@ function operate() {
     curNumber = '';
 }
 
-const buttons = document.querySelectorAll('.buttons button');
-buttons.forEach(button => {
+function processEvent(button) {
     button.addEventListener('click', () => {
         if (curNumber === ":'\u2011(") {
             curNumber = '';
@@ -111,4 +111,7 @@ buttons.forEach(button => {
         }
         updateScreen();
     });
-});
+}
+
+buttons.forEach(processEvent);
+
