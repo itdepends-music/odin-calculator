@@ -46,7 +46,7 @@ function operate() {
     } else if (operator === '\u2212') {
         result = a - b;
     } else if (operator === '\u00D7') {
-        result = a * b;        
+        result = a * b;
     } else if (operator === '\u00F7') {
         result = a / b;
         if (b === 0) {
@@ -125,7 +125,7 @@ function processEvent(text) {
 }
 
 buttons.forEach((button) => {
-    button.addEventListener('click', e => {processEvent(button.textContent);})});
+    button.addEventListener('click', () => {processEvent(button.textContent);});});
 
 document.addEventListener("keydown", e => {
     e.preventDefault();
